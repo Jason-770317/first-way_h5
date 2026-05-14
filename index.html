@@ -2046,25 +2046,37 @@
         }
     </script>
 
+    
     <script>
         (function() {
             const audio = document.getElementById('bgm');
             const btn = document.getElementById('music-btn');
             let isPlaying = false;
+            let hasInteracted = false;
             
             // Set volume
             audio.volume = 0.4;
             
-            // Try to autoplay
-            audio.play().then(function() {
-                isPlaying = true;
-                btn.classList.add('playing');
-            }).catch(function() {
-                // Autoplay blocked, wait for user interaction
-            });
+            // 等待用户交互后才播放
+            function tryPlay() {
+                if (!hasInteracted) {
+                    hasInteracted = true;
+                    audio.play().then(function() {
+                        isPlaying = true;
+                        btn.classList.add('playing');
+                    }).catch(function(e) {
+                        console.log('Autoplay failed:', e);
+                    });
+                }
+            }
+            
+            // 用户第一次点击页面时播放
+            document.addEventListener('click', tryPlay, { once: true });
+            document.addEventListener('touchstart', tryPlay, { once: true });
             
             // Toggle on click
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation(); // 阻止冒泡
                 if (isPlaying) {
                     audio.pause();
                     btn.classList.remove('playing');
@@ -2076,6 +2088,7 @@
             });
         })();
     </script>
+
 
 </body>
 </html>
