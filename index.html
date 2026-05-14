@@ -1385,6 +1385,41 @@
             margin: 48px 0;
         }
     </style>
+
+        /* ==================== MUSIC CONTROL ==================== */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1B3A5C 0%, #2A4F7A 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 20px rgba(27, 58, 92, 0.4);
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+        .music-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(27, 58, 92, 0.5);
+        }
+        .music-control.playing {
+            animation: pulse 1.5s infinite;
+        }
+        .music-control svg {
+            width: 24px;
+            height: 24px;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(201, 168, 76, 0.8); }
+        }
+
 </head>
 <body>
     <!-- Loading Overlay -->
@@ -1994,55 +2029,7 @@
             });
         }
     </script>
-    
-    <!-- BGM Audio -->
-    <audio id="bgm" loop preload="auto">
-        <source src="bgm.mp3" type="audio/mp4">
-        <source src="bgm.mp3" type="audio/mpeg">
-    </audio>
-    
-    <!-- Music Control Button -->
-    <div id="music-btn" class="music-control" title="点击播放/暂停背景音乐">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-        </svg>
-    </div>
-    
-    <style>
-        .music-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #1B3A5C 0%, #2A4F7A 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 9999;
-            box-shadow: 0 4px 20px rgba(27, 58, 92, 0.4);
-            transition: all 0.3s ease;
-            color: #fff;
-        }
-        .music-control:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(27, 58, 92, 0.5);
-        }
-        .music-control.playing {
-            animation: pulse 1.5s infinite;
-        }
-        .music-control svg {
-            width: 24px;
-            height: 24px;
-        }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4); }
-            50% { box-shadow: 0 4px 30px rgba(201, 168, 76, 0.8); }
-        }
-    </style>
-    
+
     <script>
         (function() {
             const audio = document.getElementById('bgm');
@@ -2073,5 +2060,6 @@
             });
         })();
     </script>
+
 </body>
 </html>
