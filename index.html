@@ -1,2094 +1,1222 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="description" content="First Way 孚斯威 - 源自德国的高端润滑油脂专家，专注服务二级纸板厂瓦楞纸生产线">
-    <meta property="og:title" content="First Way 孚斯威 - 高端润滑油脂专家">
-    <meta property="og:description" content="源自德国技术 · 专注瓦楞纸行业 · 300°C+耐温 · 45天换油周期">
-    <title>First Way 孚斯威 | Premium Lubrication Solutions</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary: #1B3A5C;
-            --primary-light: #2A4F7A;
-            --primary-dark: #0f1e35;
-            --accent: #C9A84C;
-            --accent-light: #D4B86A;
-            --accent-dark: #A88B3D;
-            --white: #FFFFFF;
-            --off-white: #F8F9FA;
-            --gray-100: #F1F3F5;
-            --gray-200: #E9ECEF;
-            --gray-300: #DEE2E6;
-            --gray-400: #ADB5BD;
-            --gray-500: #6C757D;
-            --gray-600: #495057;
-            --gray-700: #343A40;
-            --text-dark: #1A1A2E;
-            --text-body: #4A5568;
-            --gradient-primary: linear-gradient(135deg, #1B3A5C 0%, #2A4F7A 100%);
-            --gradient-accent: linear-gradient(135deg, #C9A84C 0%, #D4B86A 100%);
-            --gradient-hero: linear-gradient(160deg, #0f1e35 0%, #1B3A5C 40%, #2A4F7A 100%);
-            --gradient-dark: linear-gradient(180deg, #0a1628 0%, #0f1e35 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-        }
-
-        body {
-            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--text-body);
-            line-height: 1.6;
-            background: var(--white);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Utility Classes */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 0;
-            scroll-snap-align: start;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Animation Classes */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-        }
-
-        .slide-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .slide-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .slide-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .scale-up {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .scale-up.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* Stagger delays */
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s; }
-        .delay-5 { transition-delay: 0.5s; }
-        .delay-6 { transition-delay: 0.6s; }
-
-        /* ==================== HEADER ==================== */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 16px 24px;
-            background: rgba(27, 58, 92, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        .header.visible {
-            transform: translateY(0);
-        }
-
-        .header-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .header-logo-img {
-            height: 40px;
-            width: auto;
-        }
-
-        .header-cta {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .header-cta:hover {
-            background: var(--accent-light);
-            transform: scale(1.05);
-        }
-
-        /* ==================== HERO SECTION ==================== */
-        .hero {
-            background: var(--gradient-hero);
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg-pattern {
-            position: absolute;
-            inset: 0;
-            opacity: 0.05;
-            background-image: 
-                radial-gradient(circle at 20% 50%, var(--accent) 1px, transparent 1px),
-                radial-gradient(circle at 80% 20%, var(--accent) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: patternMove 20s linear infinite;
-        }
-
-        @keyframes patternMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-60px, -60px); }
-        }
-
-        .hero-particles {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.2; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(201, 168, 76, 0.15);
-            border: 1px solid rgba(201, 168, 76, 0.3);
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-size: 13px;
-            color: var(--accent);
-            margin-bottom: 40px;
-            backdrop-filter: blur(10px);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .hero-logo {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 40px;
-            background: var(--white);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
-            animation: logoFloat 3s ease-in-out infinite;
-            padding: 20px;
-        }
-
-        .hero-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .hero-title {
-            font-size: clamp(32px, 7vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -1px;
-        }
-
-        .hero-title span {
-            color: var(--accent);
-        }
-
-        .hero-subtitle {
-            font-size: clamp(16px, 3vw, 22px);
-            opacity: 0.9;
-            margin-bottom: 48px;
-            font-weight: 400;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-tagline {
-            font-size: 18px;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 48px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            margin-top: 64px;
-            flex-wrap: wrap;
-        }
-
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat-number {
-            font-size: 48px;
-            font-weight: 800;
-            color: var(--accent);
-            line-height: 1;
-        }
-
-        .hero-stat-label {
-            font-size: 14px;
-            opacity: 0.8;
-            margin-top: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-top: 48px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(201, 168, 76, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .hero-scroll-hint {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            color: var(--white);
-            opacity: 0.6;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        .hero-scroll-hint span {
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* ==================== BRAND SECTION ==================== */
-        .brand {
-            background: var(--off-white);
-        }
-
-        .brand-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        @media (max-width: 768px) {
-            .brand-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .brand-card {
-            background: var(--white);
-            padding: 48px 32px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(27, 58, 92, 0.08);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border-top: 4px solid var(--accent);
-        }
-
-        .brand-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(27, 58, 92, 0.15);
-        }
-
-        .brand-card-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 24px;
-            background: var(--gradient-primary);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-        }
-
-        .brand-card-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        .brand-card-desc {
-            font-size: 15px;
-            color: var(--text-body);
-            line-height: 1.7;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--gray-100);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-size: clamp(28px, 5vw, 48px);
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1.2;
-            margin-bottom: 16px;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--text-body);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* ==================== HISTORY SECTION ==================== */
-        .history {
-            background: var(--white);
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--accent);
-            transform: translateX(-50%);
-        }
-
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 20px;
-            }
-        }
-
-        .timeline-item {
-            position: relative;
-            padding: 24px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-
-        @media (max-width: 768px) {
-            .timeline-item,
-            .timeline-item:nth-child(odd) {
-                flex-direction: row;
-                padding-left: 60px;
-            }
-        }
-
-        .timeline-content {
-            width: calc(50% - 40px);
-            background: var(--gray-100);
-            padding: 28px;
-            border-radius: 16px;
-            position: relative;
-        }
-
-        @media (max-width: 768px) {
-            .timeline-content {
-                width: 100%;
-            }
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background: var(--accent);
-            border: 4px solid var(--white);
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: 0 0 0 4px var(--accent);
-        }
-
-        @media (max-width: 768px) {
-            .timeline-dot {
-                left: 20px;
-            }
-        }
-
-        .timeline-year {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 8px;
-        }
-
-        .timeline-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .timeline-desc {
-            font-size: 14px;
-            color: var(--text-body);
-        }
-
-        /* ==================== PRODUCTS SECTION ==================== */
-        .products {
-            background: var(--off-white);
-        }
-
-        .product-hero {
-            background: var(--gradient-hero);
-            color: var(--white);
-            padding: 48px;
-            border-radius: 24px;
-            margin-bottom: 32px;
-            text-align: center;
-        }
-
-        .product-hero-badge {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
-        }
-
-        .product-hero-title {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-
-        .product-hero-desc {
-            font-size: 16px;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 32px;
-            line-height: 1.7;
-        }
-
-        .product-hero-specs {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-
-        .product-hero-spec {
-            text-align: center;
-        }
-
-        .product-hero-spec-value {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--accent);
-        }
-
-        .product-hero-spec-label {
-            font-size: 12px;
-            opacity: 0.8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .product-card {
-            background: var(--white);
-            padding: 32px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(27, 58, 92, 0.08);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border-top: 4px solid var(--primary);
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(27, 58, 92, 0.15);
-        }
-
-        .product-card-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--gradient-primary);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .product-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        .product-desc {
-            font-size: 14px;
-            color: var(--text-body);
-            line-height: 1.7;
-        }
-
-        /* ==================== PAIN POINTS SECTION ==================== */
-        .pain-points {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .pain-points .section-label {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--accent);
-        }
-
-        .pain-points .section-title {
-            color: var(--white);
-        }
-
-        .pain-points .section-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .pain-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .pain-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .pain-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 32px;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-
-        .pain-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-4px);
-        }
-
-        .pain-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 20px;
-            background: rgba(201, 168, 76, 0.2);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-        }
-
-        .pain-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .pain-desc {
-            font-size: 14px;
-            opacity: 0.8;
-            line-height: 1.7;
-        }
-
-        .pain-solution {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 13px;
-        }
-
-        /* ==================== APPLICATIONS SECTION ==================== */
-        .applications {
-            background: var(--white);
-        }
-
-        .app-hero {
-            background: var(--gray-100);
-            padding: 32px;
-            border-radius: 20px;
-            margin-bottom: 48px;
-            text-align: center;
-        }
-
-        .app-hero-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .app-hero-desc {
-            font-size: 16px;
-            color: var(--text-body);
-        }
-
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .app-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .app-card {
-            background: var(--gray-100);
-            padding: 32px;
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .app-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--accent);
-        }
-
-        .app-card:hover {
-            transform: translateX(8px);
-            background: var(--white);
-            box-shadow: 0 10px 40px rgba(27, 58, 92, 0.1);
-        }
-
-        .app-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
-        }
-
-        .app-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        .app-desc {
-            font-size: 14px;
-            color: var(--text-body);
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-
-        .app-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .app-feature {
-            background: var(--white);
-            padding: 6px 12px;
-            border-radius: 50px;
-            font-size: 12px;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* ==================== CERTS SECTION ==================== */
-        .certs {
-            background: var(--off-white);
-        }
-
-        .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .certs-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .cert-card {
-            background: var(--white);
-            padding: 32px 24px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(27, 58, 92, 0.08);
-            transition: all 0.4s ease;
-        }
-
-        .cert-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(27, 58, 92, 0.12);
-        }
-
-        .cert-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 16px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-        }
-
-        .cert-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .cert-desc {
-            font-size: 12px;
-            color: var(--text-body);
-        }
-
-        /* ==================== CASES SECTION ==================== */
-        .cases {
-            background: var(--white);
-        }
-
-        .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .cases-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .case-card {
-            background: var(--gray-100);
-            padding: 32px;
-            border-radius: 20px;
-            transition: all 0.4s ease;
-            border-top: 4px solid var(--accent);
-        }
-
-        .case-card:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-4px);
-        }
-
-        .case-card:hover .case-title,
-        .case-card:hover .case-desc,
-        .case-card:hover .case-industry {
-            color: var(--white);
-        }
-
-        .case-logo {
-            width: 56px;
-            height: 56px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .case-card:hover .case-logo {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        .case-industry {
-            font-size: 12px;
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .case-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
-            transition: color 0.4s ease;
-        }
-
-        .case-desc {
-            font-size: 14px;
-            color: var(--text-body);
-            line-height: 1.7;
-            transition: color 0.4s ease;
-        }
-
-        .case-result {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--gray-300);
-            display: flex;
-            gap: 24px;
-        }
-
-        .case-card:hover .case-result {
-            border-top-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .case-stat {
-            text-align: center;
-        }
-
-        .case-stat-value {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--accent);
-        }
-
-        .case-stat-label {
-            font-size: 11px;
-            opacity: 0.8;
-        }
-
-        /* ==================== CTA SECTION ==================== */
-        .cta {
-            background: var(--gradient-hero);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .cta-content {
-            max-width: 700px;
-        }
-
-        .cta-logo {
-            width: 100px;
-            height: 100px;
-            background: var(--white);
-            border-radius: 20px;
-            margin: 0 auto 32px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cta-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .cta-title {
-            font-size: clamp(28px, 5vw, 42px);
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-
-        .cta-subtitle {
-            font-size: 18px;
-            opacity: 0.9;
-            margin-bottom: 40px;
-        }
-
-        .cta-contact {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .cta-contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 16px 24px;
-            border-radius: 12px;
-        }
-
-        .cta-contact-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .cta-contact-label {
-            font-size: 12px;
-            opacity: 0.8;
-        }
-
-        .cta-contact-value {
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-cta-primary {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 18px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-cta-primary:hover {
-            background: var(--accent-light);
-            transform: scale(1.05);
-            box-shadow: 0 10px 40px rgba(201, 168, 76, 0.4);
-        }
-
-        .btn-cta-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 18px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-cta-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* ==================== FOOTER ==================== */
-        .footer {
-            background: var(--primary-dark);
-            color: var(--white);
-            padding: 48px 24px 24px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .footer-logo-img {
-            height: 40px;
-            width: auto;
-        }
-
-        .footer-logo-text {
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .footer-info {
-            text-align: right;
-        }
-
-        .footer-company {
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        .footer-copyright {
-            font-size: 12px;
-            opacity: 0.6;
-            margin-top: 8px;
-        }
-
-        /* ==================== FLOATING CTA ==================== */
-        .floating-cta {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .floating-btn {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .floating-btn-phone {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        .floating-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* ==================== RESPONSIVE ADJUSTMENTS ==================== */
-        @media (max-width: 768px) {
-            .hero-stats {
-                gap: 24px;
-            }
-
-            .hero-stat-number {
-                font-size: 32px;
-            }
-
-            .hero-cta-group {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-
-            .product-hero {
-                padding: 32px 24px;
-            }
-
-            .product-hero-title {
-                font-size: 28px;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-info {
-                text-align: center;
-            }
-
-            .floating-cta {
-                bottom: 16px;
-                right: 16px;
-            }
-
-            .floating-btn {
-                width: 48px;
-                height: 48px;
-                font-size: 20px;
-            }
-        }
-
-        /* ==================== LOADING ANIMATION ==================== */
-        .loading-overlay {
-            position: fixed;
-            inset: 0;
-            background: var(--primary);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .loading-overlay.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loading-content {
-            text-align: center;
-            color: var(--white);
-        }
-
-        .loading-logo {
-            width: 100px;
-            height: 100px;
-            background: var(--white);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            padding: 16px;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        .loading-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .loading-text {
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        /* ==================== VI SPECIFIC ==================== */
-        .vi-accent-line {
-            width: 60px;
-            height: 4px;
-            background: var(--accent);
-            margin: 0 auto 32px;
-        }
-
-        .vi-divider {
-            width: 100%;
-            height: 1px;
-            background: var(--gray-200);
-            margin: 48px 0;
-        }
-    </style>
-
-        /* ==================== MUSIC CONTROL ==================== */
-        .music-control, .music-control[type="button"] {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #1B3A5C 0%, #2A4F7A 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 9999;
-            pointer-events: auto;
-            box-shadow: 0 4px 20px rgba(27, 58, 92, 0.4);
-            transition: all 0.3s ease;
-            color: #fff;
-        }
-        .music-control:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(27, 58, 92, 0.5);
-        }
-        .music-control.playing {
-            animation: pulse 1.5s infinite;
-        }
-        .music-control svg {
-            width: 24px;
-            height: 24px;
-        }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4); }
-            50% { box-shadow: 0 4px 30px rgba(201, 168, 76, 0.8); }
-        }
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#FFFFFF">
+<title>First Way 孚斯威 | 高端润滑解决方案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9A84C;
+  --gold-light:#E8D5A3;
+  --gold-pale:#FBF5E6;
+  --navy:#1B3A5C;
+  --navy-deep:#0F1E35;
+  --white:#FFFFFF;
+  --off-white:#FAFAF8;
+  --gray-50:#F5F4F0;
+  --gray-100:#ECEAE4;
+  --gray-200:#D8D5CC;
+  --gray-300:#B8B4A8;
+  --gray-500:#8A8780;
+  --gray-600:#6B6860;
+  --gray-700:#4A4840;
+  --gray-800:#2D2B26;
+  --success:#1A7A3C;
+  --danger:#C0392B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans SC','Inter',-apple-system,sans-serif;
+  background:var(--off-white);
+  color:var(--gray-800);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ─── Nav Dots ─── */
+.nav-dots{
+  position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:100;
+  display:flex;flex-direction:column;gap:10px;
+}
+.nav-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gray-300);cursor:pointer;transition:all 0.4s;
+  position:relative;
+}
+.nav-dot.active{
+  background:var(--gold);
+  height:22px;border-radius:4px;
+  box-shadow:0 0 8px rgba(201,168,76,0.4);
+}
+.nav-dot::after{
+  content:attr(data-label);
+  position:absolute;right:22px;top:50%;transform:translateY(-50%);
+  white-space:nowrap;font-size:11px;color:var(--gray-500);
+  opacity:0;transition:opacity 0.2s;pointer-events:none;background:var(--white);
+  padding:3px 8px;border-radius:4px;
+}
+.nav-dot:hover::after{opacity:1}
+
+/* ─── Section Base ─── */
+.section{position:relative;overflow:hidden}
+.section-pad{padding:100px 60px}
+
+/* ─── Scroll Animations ─── */
+.reveal{
+  opacity:0;transform:translateY(50px);
+  transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-scale{
+  opacity:0;transform:scale(0.85) translateY(30px);
+  transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-scale.visible{opacity:1;transform:scale(1) translateY(0)}
+.reveal-left{
+  opacity:0;transform:translateX(-60px);
+  transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{
+  opacity:0;transform:translateX(60px);
+  transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.18s}.d3{transition-delay:0.26s}
+.d4{transition-delay:0.34s}.d5{transition-delay:0.42s}.d6{transition-delay:0.5s}
+.d7{transition-delay:0.58s}
+
+/* ─── COVER ─── */
+.cover{
+  min-height:100vh;
+  background:linear-gradient(160deg,#FAFAF8 0%,#F0ECD8 40%,#E8DFC0 100%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.cover-deco{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+.cover-circle{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(201,168,76,0.15);
+}
+.cover-circle-1{width:700px;height:700px;top:-200px;right:-150px;animation:spinSlow 60s linear infinite}
+.cover-circle-2{width:500px;height:500px;bottom:-100px;left:-100px;animation:spinSlow 45s linear infinite reverse}
+.cover-circle-3{width:300px;height:300px;top:30%;left:20%;animation:spinSlow 30s linear infinite}
+@keyframes spinSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.cover-gold-line{
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.cover-content{
+  position:relative;z-index:2;text-align:center;
+  max-width:900px;padding:0 48px;
+}
+.cover-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:0.35em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:32px;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+}
+.cover-eyebrow::before,.cover-eyebrow::after{
+  content:'';width:40px;height:1px;background:var(--gold);
+}
+.cover-logo-ring{
+  width:140px;height:140px;border-radius:50%;
+  border:3px solid var(--gold);
+  margin:0 auto 40px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.02));
+  box-shadow:0 0 40px rgba(201,168,76,0.15),inset 0 0 30px rgba(201,168,76,0.05);
+  animation:ringPulse 4s ease-in-out infinite;
+  overflow:hidden;
+}
+@keyframes ringPulse{
+  0%,100%{box-shadow:0 0 40px rgba(201,168,76,0.15),inset 0 0 30px rgba(201,168,76,0.05)}
+  50%{box-shadow:0 0 60px rgba(201,168,76,0.25),inset 0 0 40px rgba(201,168,76,0.08)}
+}
+.cover-logo-ring img{width:90px;height:90px;object-fit:contain;}
+.cover-title{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(56px,11vw,110px);
+  font-weight:900;line-height:0.9;
+  letter-spacing:-0.04em;
+  color:var(--navy);
+  margin-bottom:8px;
+}
+.cover-title em{
+  font-style:normal;
+  display:block;
+  background:linear-gradient(135deg,var(--gold) 0%,#B8922A 50%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.cover-zh{
+  font-size:20px;color:var(--gray-500);letter-spacing:0.2em;
+  margin:16px 0 32px;
+}
+.cover-divider{
+  width:1px;height:60px;
+  background:linear-gradient(to bottom,transparent,var(--gold),transparent);
+  margin:0 auto 32px;
+}
+.cover-slogan{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(18px,3vw,28px);
+  font-weight:600;color:var(--navy);
+  letter-spacing:0.08em;margin-bottom:16px;
+}
+.cover-slogan span{color:var(--gold)}
+.cover-tagline{
+  font-size:14px;color:var(--gray-500);letter-spacing:0.05em;
+  margin-bottom:60px;
+}
+.cover-cta-row{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+}
+.cover-cta-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--navy);color:var(--white);
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;padding:14px 28px;border-radius:6px;
+  transition:all 0.3s;
+  border:2px solid var(--navy);
+}
+.cover-cta-primary:hover{
+  background:var(--gold);border-color:var(--gold);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(201,168,76,0.3);
+}
+.cover-cta-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:var(--navy);
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;padding:14px 28px;border-radius:6px;
+  border:2px solid var(--navy);
+  transition:all 0.3s;
+}
+.cover-cta-secondary:hover{
+  background:var(--navy);color:var(--white);
+  transform:translateY(-2px);
+}
+.cover-scroll-hint{
+  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  animation:bounceDown 2s ease-in-out infinite;
+}
+.cover-scroll-hint span{font-size:10px;color:var(--gray-400);letter-spacing:0.1em}
+.cover-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent)}
+@keyframes bounceDown{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(8px)}
+}
+
+/* ─── BRAND STORY ─── */
+.brand-section{background:var(--white)}
+.brand-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:100vh;
+}
+.brand-left{
+  background:var(--navy);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 72px;position:relative;overflow:hidden;
+}
+.brand-left-pattern{
+  position:absolute;inset:0;opacity:0.03;
+  background-image:
+    radial-gradient(circle at 2px 2px,var(--gold) 1px,transparent 0);
+  background-size:32px 32px;
+}
+.brand-left-content{position:relative;z-index:1}
+.brand-chapter{
+  font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:28px;
+  display:flex;align-items:center;gap:10px;
+}
+.brand-chapter::before{
+  content:'';width:24px;height:2px;background:var(--gold);
+}
+.brand-big-title{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(40px,4.5vw,64px);
+  font-weight:900;line-height:1;
+  letter-spacing:-0.03em;
+  color:var(--white);margin-bottom:32px;
+}
+.brand-big-title em{
+  font-style:normal;display:block;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.brand-lead{
+  font-size:16px;color:rgba(255,255,255,0.55);line-height:1.9;
+  max-width:420px;margin-bottom:48px;
+}
+.brand-stats{
+  display:flex;gap:36px;
+}
+.brand-stat{
+  border-left:2px solid var(--gold);padding-left:20px;
+}
+.brand-stat-num{
+  font-family:'Inter',sans-serif;
+  font-size:36px;font-weight:900;color:var(--gold);
+  line-height:1;margin-bottom:6px;
+}
+.brand-stat-lbl{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.08em}
+
+.brand-right{
+  background:var(--off-white);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 72px;
+}
+.brand-pillars{display:flex;flex-direction:column;gap:0}
+.brand-pillar{
+  display:flex;gap:28px;
+  padding:36px 0;
+  border-bottom:1px solid var(--gray-200);
+  transition:all 0.3s;
+}
+.brand-pillar:last-child{border-bottom:none}
+.brand-pillar:hover{padding-left:12px}
+.brand-pillar-num{
+  font-family:'Inter',sans-serif;
+  font-size:56px;font-weight:900;
+  color:var(--gray-100);line-height:1;
+  flex-shrink:0;letter-spacing:-0.04em;
+  transition:color 0.3s;
+}
+.brand-pillar:hover .brand-pillar-num{color:var(--gold)}
+.brand-pillar-content h3{
+  font-size:20px;font-weight:700;color:var(--navy);
+  margin-bottom:8px;
+}
+.brand-pillar-content p{font-size:14px;color:var(--gray-600);line-height:1.9}
+
+/* ─── TIMELINE ─── */
+.timeline-section{background:var(--white);padding:120px 0;overflow:hidden}
+.timeline-header{
+  text-align:center;padding:0 60px;margin-bottom:72px;
+}
+.timeline-header h2{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(36px,4vw,56px);
+  font-weight:900;color:var(--navy);
+  letter-spacing:-0.03em;line-height:1;
+  margin-top:12px;
+}
+.timeline-track{
+  display:flex;position:relative;
+  padding:0 80px;
+}
+.timeline-track::before{
+  content:'';position:absolute;
+  top:36px;left:80px;right:80px;height:2px;
+  background:linear-gradient(90deg,var(--gray-100),var(--gold),var(--gray-100));
+}
+.timeline-item{
+  flex:1;text-align:center;
+  position:relative;padding-top:72px;
+}
+.timeline-item::before{
+  content:'';position:absolute;
+  top:28px;left:50%;transform:translateX(-50%);
+  width:16px;height:16px;border-radius:50%;
+  background:var(--gold);
+  border:4px solid var(--white);
+  box-shadow:0 0 0 2px var(--gold);
+  z-index:1;
+}
+.timeline-badge{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  font-family:'Inter',sans-serif;
+  font-size:28px;font-weight:900;color:var(--navy);
+  letter-spacing:-0.03em;white-space:nowrap;
+}
+.timeline-item-content{padding:20px 16px 0}
+.timeline-item-content h4{
+  font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;
+}
+.timeline-item-content p{font-size:12px;color:var(--gray-600);line-height:1.65}
+
+/* ─── PRODUCTS ─── */
+.products-section{
+  background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy) 100%);
+  padding:120px 60px;position:relative;overflow:hidden;
+}
+.products-section::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 2px 2px,rgba(201,168,76,0.04) 1px,transparent 0);
+  background-size:40px 40px;
+}
+.products-header{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:72px;position:relative;z-index:1;
+}
+.products-chapter{
+  font-family:'Inter',sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:20px;
+}
+.products-title{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(36px,4vw,56px);
+  font-weight:900;color:var(--white);
+  letter-spacing:-0.03em;line-height:1;
+}
+.products-title span{color:var(--gold)}
+.products-header-note{
+  max-width:360px;text-align:right;
+  font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;
+}
+
+.pfpe-hero{
+  background:linear-gradient(135deg,rgba(201,168,76,0.18) 0%,rgba(201,168,76,0.05) 100%);
+  border:1px solid rgba(201,168,76,0.3);
+  border-radius:24px;
+  padding:56px 72px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:32px;position:relative;z-index:1;
+  overflow:hidden;
+}
+.pfpe-hero::after{
+  content:'PFPE';position:absolute;
+  right:-10px;top:50%;transform:translateY(-50%);
+  font-family:'Inter',sans-serif;font-size:180px;font-weight:900;
+  color:rgba(201,168,76,0.04);letter-spacing:0.1em;line-height:1;
+  pointer-events:none;
+}
+.pfpe-left{position:relative;z-index:1}
+.pfpe-badge{
+  display:inline-block;
+  background:var(--gold);color:var(--navy-deep);
+  padding:5px 16px;border-radius:100px;
+  font-family:'Inter',sans-serif;
+  font-size:10px;font-weight:800;letter-spacing:0.15em;
+  margin-bottom:18px;
+}
+.pfpe-name{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(28px,3.5vw,44px);
+  font-weight:900;color:var(--white);
+  letter-spacing:-0.03em;margin-bottom:8px;
+}
+.pfpe-sub{font-size:14px;color:rgba(255,255,255,0.5)}
+.pfpe-stats{display:flex;gap:56px;position:relative;z-index:1}
+.pfpe-stat{text-align:center}
+.pfpe-stat-val{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(36px,4vw,52px);
+  font-weight:900;color:var(--gold);
+  line-height:1;letter-spacing:-0.04em;
+}
+.pfpe-stat-val small{font-size:20px}
+.pfpe-stat-lbl{font-size:11px;color:rgba(255,255,255,0.4);margin-top:8px;letter-spacing:0.08em}
+
+.product-bento{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;position:relative;z-index:1;
+}
+.bento-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;padding:36px 32px;
+  position:relative;overflow:hidden;
+  transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.bento-card:hover{
+  background:rgba(255,255,255,0.08);
+  transform:translateY(-6px);
+  border-color:rgba(201,168,76,0.25);
+}
+.bento-card:nth-child(1){
+  grid-column:1/3;
+  background:linear-gradient(160deg,rgba(201,168,76,0.2) 0%,rgba(27,58,92,0.5) 100%);
+  border-color:rgba(201,168,76,0.25);
+  padding:52px 48px;
+}
+.bento-card:nth-child(1) h3{font-size:32px}
+.bento-card-num{
+  font-family:'Inter',sans-serif;
+  font-size:90px;font-weight:900;
+  color:rgba(255,255,255,0.04);
+  position:absolute;bottom:8px;right:16px;
+  line-height:1;letter-spacing:-0.05em;
+}
+.bento-card-badge{
+  display:inline-block;padding:4px 12px;border-radius:100px;
+  font-family:'Inter',sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:0.1em;
+  margin-bottom:20px;
+}
+.bento-card.large .bento-card-badge{background:var(--gold);color:var(--navy-deep)}
+.bento-card:not(.large) .bento-card-badge{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)}
+.bento-card h3{
+  font-family:'Inter',sans-serif;
+  font-size:22px;font-weight:800;color:var(--white);
+  letter-spacing:-0.02em;margin-bottom:4px;
+}
+.bento-card .type{font-size:12px;color:var(--gold);margin-bottom:12px;font-weight:500}
+.bento-card p{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.85}
+.bento-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.bento-tag{
+  padding:4px 12px;border-radius:100px;
+  font-size:10px;font-weight:600;
+  background:rgba(201,168,76,0.15);color:var(--gold-light);
+}
+
+/* ─── PAIN POINTS ─── */
+.pain-section{background:var(--gold-pale);padding:120px 60px}
+.pain-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:72px;
+}
+.pain-title{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(36px,4vw,56px);
+  font-weight:900;color:var(--navy);
+  letter-spacing:-0.03em;line-height:1;
+}
+.pain-header-note{
+  max-width:280px;text-align:right;
+  font-size:14px;color:var(--gray-600);line-height:1.7;
+}
+.pain-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.pain-card{
+  padding:48px 36px;border-radius:16px;
+  position:relative;overflow:hidden;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s;
+}
+.pain-card:hover{
+  transform:translateY(-8px);
+}
+.pain-card.red{
+  background:linear-gradient(160deg,#FEF2F2 0%,#FEE2E2 100%);
+  border:1px solid #FECACA;
+}
+.pain-card.red:hover{box-shadow:0 16px 40px rgba(220,38,38,0.15)}
+.pain-card.yellow{
+  background:linear-gradient(160deg,#FEFCE8 0%,#FEF9C3 100%);
+  border:1px solid #FDE68A;
+}
+.pain-card.yellow:hover{box-shadow:0 16px 40px rgba(180,83,9,0.15)}
+.pain-card.blue{
+  background:linear-gradient(160deg,#EFF6FF 0%,#DBEAFE 100%);
+  border:1px solid #BFDBFE;
+}
+.pain-card.blue:hover{box-shadow:0 16px 40px rgba(29,78,216,0.15)}
+.pain-level{
+  display:inline-block;padding:4px 12px;border-radius:4px;
+  font-size:10px;font-weight:800;letter-spacing:0.1em;
+  margin-bottom:16px;
+}
+.pain-card.red .pain-level{background:var(--danger);color:white}
+.pain-card.yellow .pain-level{background:#B45309;color:white}
+.pain-card.blue .pain-level{background:#1D4ED8;color:white}
+.pain-icon{
+  font-size:36px;margin-bottom:16px;
+  display:block;text-align:center;
+}
+.pain-card h3{
+  font-size:20px;font-weight:800;color:var(--gray-900);
+  margin-bottom:10px;letter-spacing:-0.01em;
+}
+.pain-card p{font-size:13px;color:var(--gray-600);line-height:1.85;margin-bottom:14px}
+.pain-impact{
+  font-size:12px;font-weight:700;
+  padding:12px 14px;border-radius:8px;
+  background:rgba(0,0,0,0.05);
+}
+.pain-card.red .pain-impact strong{color:var(--danger)}
+.pain-card.yellow .pain-impact strong{color:#92400E}
+.pain-card.blue .pain-impact strong{color:#1E40AF}
+
+/* ─── SERVICE ─── */
+.service-section{
+  background:var(--navy);padding:120px 60px;
+  position:relative;overflow:hidden;
+}
+.service-bg-text{
+  position:absolute;font-family:'Inter',sans-serif;
+  font-size:clamp(120px,15vw,240px);
+  font-weight:900;color:rgba(255,255,255,0.02);
+  top:50%;left:-20px;transform:translateY(-50%);
+  line-height:1;user-select:none;white-space:nowrap;
+}
+.service-title{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(36px,4vw,56px);
+  font-weight:900;color:var(--white);
+  letter-spacing:-0.03em;line-height:1;
+  margin-bottom:72px;
+}
+.service-title em{font-style:normal;color:var(--gold)}
+.flow-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2px;position:relative;z-index:1;
+}
+.flow-step{
+  background:rgba(255,255,255,0.04);
+  padding:52px 32px;
+  border:1px solid rgba(255,255,255,0.06);
+  transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.flow-step:hover{
+  background:rgba(255,255,255,0.09);
+  transform:translateY(-4px);
+}
+.flow-step-num{
+  font-family:'Inter',sans-serif;
+  font-size:72px;font-weight:900;
+  color:rgba(201,168,76,0.12);line-height:1;
+  letter-spacing:-0.04em;margin-bottom:20px;
+}
+.flow-step h4{
+  font-family:'Inter',sans-serif;
+  font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;
+}
+.flow-step .zh{font-size:13px;color:var(--gold);margin-bottom:14px}
+.flow-step p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.85}
+
+/* ─── COMPARISON ─── */
+.comparison-section{background:var(--white);padding:120px 60px}
+.comparison-header{text-align:center;margin-bottom:60px}
+.comparison-title{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(36px,4vw,56px);
+  font-weight:900;color:var(--navy);
+  letter-spacing:-0.03em;line-height:1;
+  margin-top:12px;
+}
+.comp-table-wrap{
+  border-radius:16px;overflow:hidden;
+  overflow-x:auto;
+  box-shadow:0 4px 40px rgba(0,0,0,0.06);
+  max-width:900px;margin:0 auto;
+}
+.comp-table{width:100%;border-collapse:collapse}
+.comp-table th{
+  padding:18px 28px;text-align:left;
+  font-family:'Inter',sans-serif;
+  font-size:12px;font-weight:700;letter-spacing:0.05em;
+}
+.comp-table th:first-child{background:var(--gray-800);color:var(--white)}
+.comp-table th:nth-child(2),.comp-table th:nth-child(3){background:var(--gray-100);color:var(--gray-600)}
+.comp-table th:last-child{background:var(--navy);color:var(--gold)}
+.comp-table td{
+  padding:16px 28px;font-size:14px;
+  border-bottom:1px solid var(--gray-100);
+}
+.comp-table tr:nth-child(even) td{background:var(--gray-50)}
+.comp-table tr:last-child td{border-bottom:none}
+.good-text{color:var(--success);font-weight:700}
+.bad-text{color:var(--danger);font-weight:600}
+.neutral-text{color:var(--gray-600)}
+
+/* ─── GUARANTEE ─── */
+.guarantee-section{background:var(--off-white);padding:120px 60px}
+.guarantee-header{text-align:center;margin-bottom:72px}
+.guarantee-title{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(36px,4vw,56px);
+  font-weight:900;color:var(--navy);
+  letter-spacing:-0.03em;line-height:1;
+  margin-top:12px;
+}
+.guarantee-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:20px;max-width:960px;margin:0 auto;
+}
+.guarantee-card{
+  background:var(--white);border-radius:16px;
+  padding:36px;display:flex;gap:20px;align-items:flex-start;
+  border:1px solid var(--gray-200);
+  transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.guarantee-card:hover{
+  border-color:var(--gold);
+  box-shadow:0 12px 48px rgba(201,168,76,0.1);
+  transform:translateY(-4px);
+}
+.guarantee-icon{
+  width:52px;height:52px;border-radius:12px;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--gold) 100%);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  font-family:'Inter',sans-serif;
+  font-size:20px;font-weight:900;color:white;
+}
+.guarantee-card h4{
+  font-family:'Inter',sans-serif;
+  font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;
+}
+.guarantee-card p{font-size:13px;color:var(--gray-600);line-height:1.65}
+.service-range{
+  max-width:960px;margin:56px auto 0;
+  background:var(--navy);border-radius:16px;
+  padding:48px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center;
+}
+.range-title{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:10px;letter-spacing:0.08em}
+.range-text{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.8}
+
+/* ─── BACK COVER ─── */
+.back-cover{
+  min-height:100vh;
+  background:linear-gradient(160deg,#FAFAF8 0%,#F0ECD8 50%,#E8DFC0 100%);
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;position:relative;overflow:hidden;
+}
+.back-deco{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+.back-circle-1{
+  position:absolute;width:600px;height:600px;
+  border:1px solid rgba(201,168,76,0.12);
+  border-radius:50%;top:-200px;right:-150px;
+  animation:spinSlow 80s linear infinite;
+}
+.back-circle-2{
+  position:absolute;width:400px;height:400px;
+  border:1px solid rgba(201,168,76,0.08);
+  border-radius:50%;bottom:-100px;left:-100px;
+  animation:spinSlow 55s linear infinite reverse;
+}
+.back-content{position:relative;z-index:2}
+.back-logo{
+  width:120px;height:120px;border-radius:50%;
+  border:2px solid var(--gold);margin:0 auto 36px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.03));
+  overflow:hidden;
+}
+.back-logo img{width:80px;height:80px;object-fit:contain;}
+.back-title{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(36px,5vw,56px);
+  font-weight:900;color:var(--navy);
+  letter-spacing:-0.03em;line-height:1;
+  margin-bottom:12px;
+}
+.back-title span{color:var(--gold)}
+.back-slogan{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(16px,2.5vw,24px);
+  font-weight:600;color:var(--gold);
+  margin-bottom:48px;
+}
+.back-divider{
+  width:60px;height:2px;
+  background:var(--gold);margin:0 auto 36px;opacity:0.5;
+}
+.back-info{font-size:14px;color:var(--gray-500);line-height:2;margin-bottom:36px}
+.back-contact{
+  display:inline-block;
+  background:var(--navy);border-radius:12px;
+  padding:28px 48px;
+}
+.back-contact p{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:4px}
+.back-contact strong{font-family:'Inter',sans-serif;font-size:22px;font-weight:700;color:var(--gold)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .brand-grid{grid-template-columns:1fr}
+  .brand-left,.brand-right{min-height:auto;padding:72px 40px}
+  .products-section,.pain-section,.service-section,.comparison-section,.guarantee-section{padding:80px 32px}
+  .timeline-track{flex-direction:column;gap:40px;padding:0 40px}
+  .timeline-track::before{display:none}
+  .timeline-item{text-align:left;padding-top:0;padding-left:48px}
+  .timeline-item::before{top:4px;left:0;transform:none}
+  .timeline-badge{position:static;transform:none;display:block;margin-bottom:8px}
+  .timeline-item-content{padding:0}
+  .product-bento,.pain-cards,.guarantee-grid,.service-range{grid-template-columns:1fr}
+  .flow-steps{grid-template-columns:repeat(2,1fr)}
+  .pfpe-hero{flex-direction:column;gap:32px;padding:36px}
+  .pfpe-stats{gap:24px}
+  .nav-dots{display:none}
+  .products-header,.pain-header{flex-direction:column;align-items:flex-start;gap:16px}
+  .products-header-note,.pain-header-note{text-align:left;max-width:100%}
+}
+@media(max-width:768px){
+  .flow-steps{grid-template-columns:1fr}
+  .comp-table th,.comp-table td{padding:14px 16px}
+  .service-range{grid-template-columns:1fr}
+  .cover-logo-ring{width:100px;height:100px}
+  .cover-logo-ring img{width:60px;height:60px}
+  .product-bento{grid-template-columns:1fr}
+  .bento-card:nth-child(1){grid-column:1;padding:40px 28px}
+}
+@media print{
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .nav-dots{display:none}
+  .reveal,.reveal-scale{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
 
-    
-    <!-- BGM Audio -->
-    <audio id="bgm" loop preload="auto">
-        <source src="bgm.mp3" type="audio/mp4">
-        <source src="bgm.mp3" type="audio/mpeg">
-    </audio>
-    
-    <!-- Music Control Button -->
-    <button id="music-btn" class="music-control" aria-label="Toggle Background Music" type="button" onclick="return false;">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-        </svg>
-    </button>
+<nav class="nav-dots" id="navDots"></nav>
 
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-content">
-            <div class="loading-logo">
-                <img src="./logo.png" alt="First Way">
-            </div>
-            <div class="loading-text">First Way Loading...</div>
-        </div>
+<!-- ═══ COVER ═══ -->
+<section class="section cover" data-section="cover">
+  <div class="cover-deco">
+    <div class="cover-circle cover-circle-1"></div>
+    <div class="cover-circle cover-circle-2"></div>
+    <div class="cover-circle cover-circle-3"></div>
+  </div>
+  <div class="cover-gold-line"></div>
+  <div class="cover-content">
+    <p class="cover-eyebrow reveal">2026 Product Catalog · 产品手册</p>
+    <div class="cover-logo-ring reveal d1">
+      <img src="https://raw.githubusercontent.com/Jason-770317/first-way_h5/main/logo.png" alt="First Way" onerror="this.parentElement.innerHTML='FW'">
     </div>
-
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="header-inner">
-            <a href="#" class="header-logo">
-                <img src="./logo.png" alt="First Way" class="header-logo-img">
-            </a>
-            <a href="tel:18027348997" class="header-cta">Contact Us</a>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="section hero" id="hero">
-        <div class="hero-bg-pattern"></div>
-        <div class="hero-particles" id="particles"></div>
-        
-        <div class="hero-content">
-            <div class="hero-badge fade-up">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-                </svg>
-                German Technology · 20 Years Excellence
-            </div>
-            
-            <div class="hero-logo scale-up">
-                <img src="./logo.png" alt="First Way">
-            </div>
-            
-            <h1 class="hero-title fade-up delay-1">
-                First Way<br>
-                <span>Premium Lubrication</span>
-            </h1>
-            
-            <p class="hero-subtitle fade-up delay-2">
-                专为二级纸板厂瓦楞纸生产线设计的高端润滑油脂解决方案
-            </p>
-
-            <p class="hero-tagline fade-up delay-3">Precision · Performance · Reliability</p>
-
-            <div class="hero-stats fade-up delay-4">
-                <div class="hero-stat">
-                    <div class="hero-stat-number">300°C+</div>
-                    <div class="hero-stat-label">耐温能力</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">45</div>
-                    <div class="hero-stat-label">天换油周期</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">≤3%</div>
-                    <div class="hero-stat-label">蒸发损失</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">20+</div>
-                    <div class="hero-stat-label">年行业经验</div>
-                </div>
-            </div>
-
-            <div class="hero-cta-group fade-up delay-5">
-                <a href="#products" class="btn btn-primary">
-                    了解PFPE产品
-                </a>
-                <a href="tel:18027348997" class="btn btn-outline">
-                    立即咨询
-                </a>
-            </div>
-        </div>
-
-        <div class="hero-scroll-hint">
-            <span>Scroll Down</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M7.41 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.41 8.59Z"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Brand Section -->
-    <section class="section brand" id="brand">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label fade-up">Brand Positioning</div>
-                <h2 class="section-title fade-up delay-1">国际品质 · 本土服务</h2>
-                <p class="section-subtitle fade-up delay-2">源自德国配方技术，专注服务中国二级纸板厂</p>
-            </div>
-
-            <div class="brand-grid">
-                <div class="brand-card fade-up delay-2">
-                    <div class="brand-card-icon">🇩🇪</div>
-                    <h3 class="brand-card-title">German Technology</h3>
-                    <p class="brand-card-desc">源自德国严谨工艺，PFPE全氟聚醚核心技术，欧洲高端润滑油脂研发体系传承</p>
-                </div>
-                <div class="brand-card fade-up delay-3">
-                    <div class="brand-card-icon">🏭</div>
-                    <h3 class="brand-card-title">Industry Focus</h3>
-                    <p class="brand-card-desc">专注服务二级纸板厂，深度理解瓦楞纸生产线润滑需求，提供针对性解决方案</p>
-                </div>
-                <div class="brand-card fade-up delay-4">
-                    <div class="brand-card-icon">⚡</div>
-                    <h3 class="brand-card-title">Local Service</h3>
-                    <p class="brand-card-desc">深耕行业20年，提供快速响应的本地技术支持，48小时上门服务</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- History Section -->
-    <section class="section history" id="history">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label fade-up">Our Journey</div>
-                <h2 class="section-title fade-up delay-1">20年匠心传承</h2>
-                <p class="section-subtitle fade-up delay-2">从德国技术到中国市场，每一步都精益求精</p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item fade-up">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2006</div>
-                        <div class="timeline-title">技术引进</div>
-                        <div class="timeline-desc">引进德国PFPE全氟聚醚润滑技术，开始本土化研发</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                
-                <div class="timeline-item fade-up">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2012</div>
-                        <div class="timeline-title">技术突破</div>
-                        <div class="timeline-desc">PFPE技术取得重大进展，耐温能力突破300°C，获得核心专利</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                
-                <div class="timeline-item fade-up">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2018</div>
-                        <div class="timeline-title">行业深耕</div>
-                        <div class="timeline-desc">服务超过50家二级纸板厂，成为瓦楞纸行业润滑油脂首选品牌</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                
-                <div class="timeline-item fade-up">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2024</div>
-                        <div class="timeline-title">国家级认证</div>
-                        <div class="timeline-desc">获得国家高新技术企业、科技型中小企业双认定</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                
-                <div class="timeline-item fade-up">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2026</div>
-                        <div class="timeline-title">品牌升级</div>
-                        <div class="timeline-desc">First Way品牌正式运营，开启国际化发展新篇章</div>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="section products" id="products">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label fade-up">Core Products</div>
-                <h2 class="section-title fade-up delay-1">PFPE全氟聚醚润滑脂</h2>
-                <p class="section-subtitle fade-up delay-2">专为二级纸板厂瓦楞纸生产线高温环境设计</p>
-            </div>
-
-            <div class="product-hero fade-up delay-2">
-                <span class="product-hero-badge">旗舰产品 · Flagship Product</span>
-                <h3 class="product-hero-title">PFPE Perfluoropolyether Grease</h3>
-                <p class="product-hero-desc">源自德国的顶级全氟聚醚润滑脂，适用于高温、重载、腐蚀环境。核心专利技术，卓越的热稳定性和化学惰性，是瓦楞纸高温瓦线、双面机的首选润滑方案。</p>
-                <div class="product-hero-specs">
-                    <div class="product-hero-spec">
-                        <div class="product-hero-spec-value">300°C+</div>
-                        <div class="product-hero-spec-label">耐温能力</div>
-                    </div>
-                    <div class="product-hero-spec">
-                        <div class="product-hero-spec-value">≤3%</div>
-                        <div class="product-hero-spec-label">蒸发损失</div>
-                    </div>
-                    <div class="product-hero-spec">
-                        <div class="product-hero-spec-value">1-2级</div>
-                        <div class="product-hero-spec-label">抗水等级</div>
-                    </div>
-                    <div class="product-hero-spec">
-                        <div class="product-hero-spec-value">45天</div>
-                        <div class="product-hero-spec-label">换油周期</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="products-grid">
-                <div class="product-card fade-up delay-3">
-                    <div class="product-card-icon">⚙️</div>
-                    <h3 class="product-title">FW-Gear Series</h3>
-                    <p class="product-desc">专为瓦楞纸生产线齿轮箱设计，极压抗磨性能卓越，降低齿轮磨损50%以上，延长设备使用寿命。</p>
-                </div>
-
-                <div class="product-card fade-up delay-4">
-                    <div class="product-card-icon">🎯</div>
-                    <h3 class="product-title">FW-Bearing Series</h3>
-                    <p class="product-desc">高精度轴承润滑脂，低噪音、高转速，保证瓦线稳定运行，减少停机时间，提升生产效率。</p>
-                </div>
-
-                <div class="product-card fade-up delay-5">
-                    <div class="product-card-icon">🔄</div>
-                    <h3 class="product-title">FW-Slew Series</h3>
-                    <p class="product-desc">回转减速机专用润滑脂，适用于纸板输送系统、堆叠机械等回转关节，防泄漏设计。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pain Points Section -->
-    <section class="section pain-points" id="pain">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label fade-up">Pain Points</div>
-                <h2 class="section-title fade-up delay-1">二级纸板厂的润滑困境</h2>
-                <p class="section-subtitle fade-up delay-2">这些困扰，您是否也正在经历？</p>
-            </div>
-
-            <div class="pain-grid">
-                <div class="pain-card fade-up delay-2">
-                    <div class="pain-icon">🔥</div>
-                    <h3 class="pain-title">高温软化流失</h3>
-                    <p class="pain-desc">瓦线高温环境下普通润滑脂软化流淌，无法形成有效润滑膜，导致设备磨损加剧</p>
-                    <div class="pain-solution">First Way PFPE 300°C+稳定</div>
-                </div>
-                
-                <div class="pain-card fade-up delay-3">
-                    <div class="pain-icon">💧</div>
-                    <h3 class="pain-title">蒸汽水汽侵蚀</h3>
-                    <p class="pain-desc">纸板生产线蒸汽潮湿环境，润滑脂被冲刷流失，设备锈蚀严重，维护成本上升</p>
-                    <div class="pain-solution">1-2级强抗水性保护</div>
-                </div>
-                
-                <div class="pain-card fade-up delay-4">
-                    <div class="pain-icon">⏰</div>
-                    <h3 class="pain-title">频繁换油维护</h3>
-                    <p class="pain-desc">低品质润滑脂需要频繁添加更换，增加人工成本和非计划停机，影响产能</p>
-                    <div class="pain-solution">45天超长换油周期</div>
-                </div>
-                
-                <div class="pain-card fade-up delay-3">
-                    <div class="pain-icon">💰</div>
-                    <h3 class="pain-title">进口品牌高价</h3>
-                    <p class="pain-desc">壳牌、美孚等进口品牌价格高昂，增加生产成本，降低二级纸板厂竞争力</p>
-                    <div class="pain-solution">国际品质·国产价格</div>
-                </div>
-                
-                <div class="pain-card fade-up delay-4">
-                    <div class="pain-icon">🔧</div>
-                    <h3 class="pain-title">设备磨损加剧</h3>
-                    <p class="pain-desc">润滑不良导致齿轮、轴承磨损加快，设备寿命大幅缩短，维修费用激增</p>
-                    <div class="pain-solution">极压抗磨专利配方</div>
-                </div>
-                
-                <div class="pain-card fade-up delay-5">
-                    <div class="pain-icon">📉</div>
-                    <h3 class="pain-title">纸品质量下降</h3>
-                    <p class="pain-desc">润滑不良导致轧辊偏心、纸板压线不均，影响产品良率和客户满意度</p>
-                    <div class="pain-solution">稳定运行·品质保障</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Applications Section -->
-    <section class="section applications" id="applications">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label fade-up">Applications</div>
-                <h2 class="section-title fade-up delay-1">瓦线润滑解决方案</h2>
-                <p class="section-subtitle fade-up delay-2">覆盖二级纸板厂瓦楞纸生产线所有关键润滑点</p>
-            </div>
-
-            <div class="app-hero fade-up delay-2">
-                <h3 class="app-hero-title">专为二级纸板厂设计</h3>
-                <p class="app-hero-desc">拥有瓦楞纸板生产线的企业，日产能5-50万平方米，设备运行温度180-280°C</p>
-            </div>
-
-            <div class="app-grid">
-                <div class="app-card fade-up delay-3">
-                    <div class="app-icon">🏭</div>
-                    <h3 class="app-title">高温瓦线主轴承</h3>
-                    <p class="app-desc">单面机、双面机主轴承承受200-280°C高温，First Way PFPE专为高温环境设计，不软化不流失。</p>
-                    <div class="app-features">
-                        <span class="app-feature">300°C+耐温</span>
-                        <span class="app-feature">热稳定</span>
-                        <span class="app-feature">不流失</span>
-                    </div>
-                </div>
-                
-                <div class="app-card fade-up delay-4">
-                    <div class="app-icon">⚙️</div>
-                    <h3 class="app-title">齿轮箱润滑</h3>
-                    <p class="app-desc">瓦线齿轮箱承受重载冲击，需要极压抗磨性能卓越的润滑脂，减少磨损延长寿命。</p>
-                    <div class="app-features">
-                        <span class="app-feature">极压抗磨</span>
-                        <span class="app-feature">减磨50%</span>
-                        <span class="app-feature">降噪</span>
-                    </div>
-                </div>
-                
-                <div class="app-card fade-up delay-5">
-                    <div class="app-icon">🎯</div>
-                    <h3 class="app-title">轧辊轴承</h3>
-                    <p class="app-desc">轧辊轴承需要高精度润滑，保证纸板压线均匀，提升产品良率和客户满意度。</p>
-                    <div class="app-features">
-                        <span class="app-feature">高精度</span>
-                        <span class="app-feature">稳定压线</span>
-                        <span class="app-feature">提升良率</span>
-                    </div>
-                </div>
-                
-                <div class="app-card fade-up delay-6">
-                    <div class="app-icon">🔄</div>
-                    <h3 class="app-title">回转减速机</h3>
-                    <p class="app-desc">纸板堆叠、输送系统的回转关节需要专用润滑脂，防止泄漏污染纸品。</p>
-                    <div class="app-features">
-                        <span class="app-feature">防泄漏</span>
-                        <span class="app-feature">回转专用</span>
-                        <span class="app-feature">不污染</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section class="section certs" id="certs">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label fade-up">Certifications</div>
-                <h2 class="section-title fade-up delay-1">权威认证 · 品质保障</h2>
-                <p class="section-subtitle fade-up delay-2">国家级认证，品质值得信赖</p>
-            </div>
-
-            <div class="certs-grid">
-                <div class="cert-card fade-up delay-2">
-                    <div class="cert-icon">🏆</div>
-                    <h3 class="cert-title">国家高新技术企业</h3>
-                    <p class="cert-desc">2024年认定<br>国家级资质认证</p>
-                </div>
-                
-                <div class="cert-card fade-up delay-3">
-                    <div class="cert-icon">🔬</div>
-                    <h3 class="cert-title">科技型中小企业</h3>
-                    <p class="cert-desc">2025年认定<br>技术创新型企业</p>
-                </div>
-                
-                <div class="cert-card fade-up delay-4">
-                    <div class="cert-icon">📜</div>
-                    <h3 class="cert-title">ISO 9001</h3>
-                    <p class="cert-desc">质量管理体系<br>国际标准认证</p>
-                </div>
-                
-                <div class="cert-card fade-up delay-5">
-                    <div class="cert-icon">🛡️</div>
-                    <h3 class="cert-title">RoHS/REACH</h3>
-                    <p class="cert-desc">环保合规认证<br>欧盟标准</p>
-                </div>
-            </div>
-
-            <div style="margin-top: 64px; text-align: center;" class="fade-up delay-6">
-                <p style="font-size: 18px; color: var(--primary); font-weight: 600; margin-bottom: 24px;">
-                    核心技术专利 · 自主研发实力
-                </p>
-                <p style="font-size: 15px; color: var(--text-body); max-width: 700px; margin: 0 auto; line-height: 1.8;">
-                    拥有10项发明及实用新型专利，核心发明专利CN117821142A（复配添加剂及润滑酯制备方法），
-                    为二级纸板厂提供持续技术升级保障
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cases Section -->
-    <section class="section cases" id="cases">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label fade-up">Trusted By</div>
-                <h2 class="section-title fade-up delay-1">行业标杆客户</h2>
-                <p class="section-subtitle fade-up delay-2">世界500强及行业龙头企业的共同选择</p>
-            </div>
-
-            <div class="cases-grid">
-                <div class="case-card fade-up delay-2">
-                    <div class="case-logo">格兰仕</div>
-                    <div class="case-industry">家电制造</div>
-                    <h3 class="case-title">格兰仕集团</h3>
-                    <p class="case-desc">全球知名家电制造企业，生产线设备润滑全面升级，设备故障率降低40%</p>
-                    <div class="case-result">
-                        <div class="case-stat">
-                            <div class="case-stat-value">40%</div>
-                            <div class="case-stat-label">故障率降低</div>
-                        </div>
-                        <div class="case-stat">
-                            <div class="case-stat-value">60天</div>
-                            <div class="case-stat-label">换油周期</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="case-card fade-up delay-3">
-                    <div class="case-logo">海信</div>
-                    <div class="case-industry">家电制造</div>
-                    <h3 class="case-title">海信/科龙</h3>
-                    <p class="case-desc">中国家电行业龙头企业，包装生产线润滑解决方案供应商，稳定运行超3年</p>
-                    <div class="case-result">
-                        <div class="case-stat">
-                            <div class="case-stat-value">3年+</div>
-                            <div class="case-stat-label">稳定合作</div>
-                        </div>
-                        <div class="case-stat">
-                            <div class="case-stat-value">0</div>
-                            <div class="case-stat-label">润滑故障</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="case-card fade-up delay-4">
-                    <div class="case-logo">CNOOC</div>
-                    <div class="case-industry">石油化工</div>
-                    <h3 class="case-title">中国海洋石油集团</h3>
-                    <p class="case-desc">特高温、高腐蚀环境下的设备润滑，First Way PFPE表现卓越</p>
-                    <div class="case-result">
-                        <div class="case-stat">
-                            <div class="case-stat-value">极端</div>
-                            <div class="case-stat-label">工况适应</div>
-                        </div>
-                        <div class="case-stat">
-                            <div class="case-stat-value">300°C+</div>
-                            <div class="case-stat-label">耐温验证</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 48px; text-align: center;" class="fade-up delay-5">
-                <p style="font-size: 14px; color: var(--gray-500);">
-                    更多行业客户：美的、格力、TCL、创维等知名企业
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section cta" id="contact">
-        <div class="container">
-            <div class="cta-content">
-                <div class="cta-logo fade-up">
-                    <img src="./logo.png" alt="First Way">
-                </div>
-                <h2 class="cta-title fade-up delay-1">开启高效润滑新时代</h2>
-                <p class="cta-subtitle fade-up delay-2">立即联系，获取免费润滑方案咨询</p>
-
-                <div class="cta-contact fade-up delay-3">
-                    <div class="cta-contact-item">
-                        <div class="cta-contact-icon">👤</div>
-                        <div>
-                            <div class="cta-contact-label">专属顾问</div>
-                            <div class="cta-contact-value">曾喜勤</div>
-                        </div>
-                    </div>
-                    <div class="cta-contact-item">
-                        <div class="cta-contact-icon">📞</div>
-                        <div>
-                            <div class="cta-contact-label">联系电话</div>
-                            <div class="cta-contact-value">180-2734-8997</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cta-buttons fade-up delay-4">
-                    <a href="tel:18027348997" class="btn-cta-primary">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"/>
-                        </svg>
-                        立即拨打
-                    </a>
-                    <a href="#" class="btn-cta-secondary" onclick="alert('请添加微信：FirstWayLubricant'); return false;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8.69 13.3C8.69 13.3 8.04 13.1 7.49 12.78C5.17 11.5 3 9.02 3 6.2C3 3.96 4.84 2.2 7.09 2.2C8.04 2.2 8.94 2.55 9.64 3.11C10.34 3.67 10.8 4.44 10.8 5.31C10.8 6.18 10.34 6.95 9.64 7.51C8.94 8.07 8.04 8.42 7.09 8.42C6.14 8.42 5.24 8.07 4.54 7.51C4.32 7.32 4.14 7.12 4 6.9C4 6.9 4.14 7.18 4.35 7.51C5.05 8.07 5.95 8.42 6.9 8.42C8.14 8.42 9.21 7.63 9.6 6.53C9.67 6.29 9.7 6.04 9.7 5.79C9.7 4.92 9.24 4.15 8.54 3.59C7.84 3.03 6.94 2.68 5.99 2.68C3.74 2.68 2 4.44 2 6.68C2 9.5 4.17 11.98 6.49 13.26C7.04 13.58 7.69 13.78 7.69 13.78C7.75 13.8 7.82 13.81 7.89 13.81C8.43 13.81 8.85 13.39 8.85 12.85C8.85 12.31 8.43 11.89 7.89 11.89C7.69 11.89 7.51 11.95 7.36 12.05C7.36 12.05 7.51 12.11 7.69 12.16C9.04 12.57 10.18 13.41 10.87 14.52C11.56 15.63 11.76 16.91 11.6 18.14C11.36 20.07 10.03 21.73 8.27 22.37C8.27 22.37 8.13 22.43 8.02 22.46C7.91 22.49 7.8 22.49 7.73 22.46C7.73 22.46 7.91 22.72 8.13 23.05C9.18 24.26 10.53 25 12.03 25C14.28 25 16.12 23.24 16.12 21C16.12 20.17 15.93 19.4 15.57 18.72C15.21 18.04 14.69 17.48 14.04 17.11C15.3 16.67 16.37 15.78 17.06 14.63C17.75 13.48 18.02 12.14 17.81 10.83C17.53 8.9 16.2 7.24 14.44 6.6C14.44 6.6 14.3 6.54 14.19 6.51C14.08 6.48 13.97 6.48 13.9 6.51C13.9 6.51 14.08 6.25 14.3 5.92C15.54 4.37 17.3 3.3 19.28 3.3C21.53 3.3 23.37 5.06 23.37 7.3C23.37 10.12 21.2 12.6 18.88 13.88C18.33 14.2 17.68 14.4 17.68 14.4C17.62 14.42 17.55 14.43 17.48 14.43C16.94 14.43 16.52 14.01 16.52 13.47C16.52 12.93 16.94 12.51 17.48 12.51C17.68 12.51 17.86 12.57 18.01 12.67C18.01 12.67 17.86 12.73 17.68 12.78C16.33 13.19 15.19 14.03 14.5 15.14C13.81 16.25 13.61 17.53 13.77 18.76C14.01 20.69 15.34 22.35 17.1 22.99C17.1 22.99 17.24 23.05 17.35 23.08C17.46 23.11 17.57 23.11 17.64 23.08C17.64 23.08 17.46 22.82 17.24 22.49C16.19 21.28 14.84 20.54 13.34 20.54C11.09 20.54 9.25 22.3 9.25 24.54C9.25 24.77 9.28 24.99 9.32 25.2"/>
-                        </svg>
-                        添加微信
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="./logo.png" alt="First Way" class="footer-logo-img">
-                <span class="footer-logo-text">First Way 孚斯威</span>
-            </div>
-            <div class="footer-info">
-                <div class="footer-company">广东孚斯威润滑科技有限公司</div>
-                <div class="footer-copyright">© 2026 First Way. All Rights Reserved.</div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating CTA -->
-    <div class="floating-cta">
-        <a href="tel:18027348997" class="floating-btn floating-btn-phone" title="立即拨打">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"/>
-            </svg>
-        </a>
+    <h1 class="cover-title reveal d2">First <em>Way</em></h1>
+    <p class="cover-zh reveal d3">— 孚 斯 威 —</p>
+    <div class="cover-divider reveal d3"></div>
+    <p class="cover-slogan reveal d4">Precision. <span>Performance.</span> First Way.</p>
+    <p class="cover-tagline reveal d5">瓦楞纸行业高端润滑解决方案 · First Way 中国大陆独家运营</p>
+    <div class="cover-cta-row reveal d5">
+      <a href="#brand" class="cover-cta-primary">了解方案 →</a>
+      <a href="#products" class="cover-cta-secondary">产品中心</a>
     </div>
+  </div>
+  <div class="cover-scroll-hint">
+    <span>SCROLL</span>
+    <div class="cover-scroll-line"></div>
+  </div>
+</section>
 
-    <script>
-        // Loading overlay
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loadingOverlay').classList.add('hidden');
-            }, 1000);
-        });
+<!-- ═══ BRAND STORY ═══ -->
+<section class="section brand-section" id="brand" data-section="brand">
+  <div class="brand-grid">
+    <div class="brand-left">
+      <div class="brand-left-pattern"></div>
+      <div class="brand-left-content">
+        <p class="brand-chapter reveal">Chapter 01 · 品牌故事</p>
+        <h2 class="brand-big-title reveal d1">源自德国<br><em>专注润滑</em><br>20年</h2>
+        <p class="brand-lead reveal d2">在德国中部莱茵河畔，有一家专注于特种润滑技术数十年的实验室型企业。2026年，广州叶林科技全资收购 First Way，将德国严谨精密与中国市场活力深度融合。</p>
+        <div class="brand-stats reveal d3">
+          <div class="brand-stat">
+            <div class="brand-stat-num">100+</div>
+            <div class="brand-stat-lbl">专业配方储备</div>
+          </div>
+          <div class="brand-stat">
+            <div class="brand-stat-num">2006</div>
+            <div class="brand-stat-lbl">研发起始年</div>
+          </div>
+          <div class="brand-stat">
+            <div class="brand-stat-num">300°C+</div>
+            <div class="brand-stat-lbl">PFPE耐温上限</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="brand-right">
+      <div class="brand-pillars">
+        <div class="brand-pillar reveal">
+          <div class="brand-pillar-num">01</div>
+          <div class="brand-pillar-content">
+            <h3>德国技术传承</h3>
+            <p>莱茵河畔实验室，专注特种润滑基础研究，建立核心配方体系，PFPE全氟聚醚配方全球领先。</p>
+          </div>
+        </div>
+        <div class="brand-pillar reveal-left d2">
+          <div class="brand-pillar-num">02</div>
+          <div class="brand-pillar-content">
+            <h3>广州叶林科技运营</h3>
+            <p>First Way 中国大陆独家运营主体，结合德国配方与中国制造优势，服务格兰仕、海信等知名品牌。</p>
+          </div>
+        </div>
+        <div class="brand-pillar reveal-right d3">
+          <div class="brand-pillar-num">03</div>
+          <div class="brand-pillar-content">
+            <h3>高端润滑专家</h3>
+            <p>专注高温润滑与常规工业润滑两大领域，为高负荷、高温、高湿等严苛工况，提供精准匹配的润滑解决方案。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Header show/hide on scroll
-        let lastScroll = 0;
-        const header = document.getElementById('header');
-        
-        window.addEventListener('scroll', function() {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.classList.add('visible');
-            } else {
-                header.classList.remove('visible');
-            }
-            
-            lastScroll = currentScroll;
-        });
+<!-- ═══ TIMELINE ═══ -->
+<section class="section timeline-section" data-section="timeline">
+  <div class="timeline-header">
+    <p class="brand-chapter reveal">Chapter 02 · 技术历程</p>
+    <h2 class="reveal d1">从德国实验室到中国生产线</h2>
+  </div>
+  <div class="timeline-track">
+    <div class="timeline-item reveal">
+      <div class="timeline-badge">起源</div>
+      <div class="timeline-item-content">
+        <h4>莱茵河畔实验室</h4>
+        <p>德国中部小城，专注特种润滑基础研究，建立核心配方体系</p>
+      </div>
+    </div>
+    <div class="timeline-item reveal d2">
+      <div class="timeline-badge">积累</div>
+      <div class="timeline-item-content">
+        <h4>数十年技术沉淀</h4>
+        <p>完成100+专业配方研发，覆盖PFPE、高低温、食品级、齿轮、轴承等领域</p>
+      </div>
+    </div>
+    <div class="timeline-item reveal d3">
+      <div class="timeline-badge">2006</div>
+      <div class="timeline-item-content">
+        <h4>华南制造基地成立</h4>
+        <p>华南制造基地成立，专注特种润滑研发，服务格兰仕、海信等知名企业</p>
+      </div>
+    </div>
+    <div class="timeline-item reveal d4">
+      <div class="timeline-badge">2026</div>
+      <div class="timeline-item-content">
+        <h4>品牌收购与本土化</h4>
+        <p>广州叶林科技全资收购 First Way，正式进入中国市场</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+<!-- ═══ PRODUCTS ═══ -->
+<section class="section products-section" id="products" data-section="products">
+  <div class="products-header">
+    <div class="reveal">
+      <p class="products-chapter">Chapter 03 · 核心产品</p>
+      <h2 class="products-title">四大产品线<br><span>全面覆盖</span></h2>
+    </div>
+    <div class="products-header-note reveal d2">
+      针对瓦楞纸生产线的高温工况，First Way打造了完整的润滑产品体系，覆盖齿轮箱、轴承、回转机构的所有润滑点。
+    </div>
+  </div>
+  <div class="product-bento">
+    <div class="bento-card reveal d1">
+      <div class="bento-card-num">01</div>
+      <div class="bento-card-badge">FLAGSHIP · 旗舰</div>
+      <h3>PFPE 全氟聚醚</h3>
+      <div class="type">旗舰级 · 极端高温工况</div>
+      <p>300°C耐温上限，超长换油周期45天以上，蒸发损失≤3%，专为严苛高温高负荷工况设计。</p>
+      <div class="bento-tags">
+        <span class="bento-tag">PFPE配方</span>
+        <span class="bento-tag">300°C+</span>
+        <span class="bento-tag">45天周期</span>
+        <span class="bento-tag">≤3%蒸发</span>
+      </div>
+    </div>
+    <div class="bento-card reveal d2">
+      <div class="bento-card-num">02</div>
+      <div class="bento-card-badge">GEAR SERIES</div>
+      <h3>FW-Gear</h3>
+      <div class="type">齿轮润滑脂系列</div>
+      <p>专为瓦楞辊齿轮箱、压印齿轮设计。抗极压性能卓越，耐高温280°C以上，长期连续运转首选。</p>
+      <div class="bento-tags">
+        <span class="bento-tag">抗极压 EP</span>
+        <span class="bento-tag">280°C+</span>
+        <span class="bento-tag">低积碳</span>
+      </div>
+    </div>
+    <div class="bento-card reveal d3">
+      <div class="bento-card-num">03</div>
+      <div class="bento-card-badge">BEARING SERIES</div>
+      <h3>FW-Bearing</h3>
+      <div class="type">高温轴承脂系列</div>
+      <p>适用于热板轴承、压辊轴承。滴点280°C以上，低积碳，减少轴承磨损与维护成本。</p>
+      <div class="bento-tags">
+        <span class="bento-tag">滴点 280°C+</span>
+        <span class="bento-tag">低积碳</span>
+        <span class="bento-tag">减少磨损</span>
+      </div>
+    </div>
+    <div class="bento-card reveal d4">
+      <div class="bento-card-num">04</div>
+      <div class="bento-card-badge">SLEW SERIES</div>
+      <h3>FW-Slew</h3>
+      <div class="type">回转减速机脂</div>
+      <p>专为预热锅回转轴承、换纸卷回转机构设计，抗冲击负载，防水冲刷，延长设备寿命。</p>
+      <div class="bento-tags">
+        <span class="bento-tag">抗冲击</span>
+        <span class="bento-tag">防水冲刷</span>
+        <span class="bento-tag">回转机构</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+<!-- ═══ PAIN POINTS ═══ -->
+<section class="section pain-section" data-section="pain">
+  <div class="pain-header">
+    <div class="reveal">
+      <p class="brand-chapter">Chapter 04 · 行业痛点</p>
+      <h2 class="pain-title">每一条瓦线<br>都在承受这些风险</h2>
+    </div>
+    <div class="pain-header-note reveal d2">
+      瓦楞纸生产线长期处于极端高温高负荷工况，了解这些风险是选择正确润滑方案的前提。
+    </div>
+  </div>
+  <div class="pain-cards">
+    <div class="pain-card red reveal d1">
+      <div class="pain-level">高风险</div>
+      <span class="pain-icon">&#9650;</span>
+      <h3>普通润滑脂滴点不足</h3>
+      <p>在180–200°C高温下软化流失，导致轴承干磨、磨损加剧，产生非计划停机。</p>
+      <div class="pain-impact">一次非计划停机损失可达 <strong>数万元</strong></div>
+    </div>
+    <div class="pain-card red reveal d2">
+      <div class="pain-level">高风险</div>
+      <span class="pain-icon">&#9888;</span>
+      <h3>高温积碳结焦</h3>
+      <p>油脂在高温下分解残留，堵塞轴承滚道，加速设备磨损。</p>
+      <div class="pain-impact">缩短设备使用寿命 <strong>30%以上</strong></div>
+    </div>
+    <div class="pain-card yellow reveal d3">
+      <div class="pain-level">注意</div>
+      <span class="pain-icon">&#8635;</span>
+      <h3>换油周期过短</h3>
+      <p>普通润滑脂7–14天需更换，增加维护成本和停机时间。</p>
+      <div class="pain-impact">每年额外停机维护 <strong>20+ 次</strong></div>
+    </div>
+    <div class="pain-card yellow reveal d1">
+      <div class="pain-level">注意</div>
+      <span class="pain-icon">&#8872;</span>
+      <h3>抗水性差</h3>
+      <p>湿部蒸汽冲刷导致润滑失效，润滑膜被破坏。</p>
+      <div class="pain-impact">潮湿环境下 <strong>润滑效果下降50%</strong></div>
+    </div>
+    <div class="pain-card blue reveal d2">
+      <div class="pain-level">提示</div>
+      <span class="pain-icon">&#9788;</span>
+      <h3>设备运行温度超标</h3>
+      <p>轴承工作温度持续偏高，加速润滑油脂劣化。</p>
+      <div class="pain-impact">温度每升高10°C，<strong>油脂寿命减半</strong></div>
+    </div>
+    <div class="pain-card blue reveal d3">
+      <div class="pain-level">提示</div>
+      <span class="pain-icon">&#9673;</span>
+      <h3>缺乏专业润滑管理</h3>
+      <p>多数工厂依赖经验选油，缺乏工况数据支撑。</p>
+      <div class="pain-impact">科学润滑管理可降低 <strong>40%维护成本</strong></div>
+    </div>
+  </div>
+</section>
 
-        // Observe all animated elements
-        document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right, .scale-up').forEach(function(el) {
-            observer.observe(el);
-        });
+<!-- ═══ SERVICE FLOW ═══ -->
+<section class="section service-section" data-section="service">
+  <div class="service-bg-text">SOLUTION</div>
+  <p class="brand-chapter reveal">Chapter 05 · 解决方案</p>
+  <h2 class="service-title reveal d1">不只是卖油<br><em>是完整润滑方案</em></h2>
+  <div class="flow-steps">
+    <div class="flow-step reveal d1">
+      <div class="flow-step-num">01</div>
+      <h4>现场工况诊断</h4>
+      <div class="zh">On-Site Diagnosis</div>
+      <p>技术工程师深入车间，检测设备运行温度、振动、噪声、润滑周期等关键参数</p>
+    </div>
+    <div class="flow-step reveal d2">
+      <div class="flow-step-num">02</div>
+      <h4>产品选型匹配</h4>
+      <div class="zh">Product Selection</div>
+      <p>根据诊断结果，匹配最适合的产品系列，确定换油周期和加注量</p>
+    </div>
+    <div class="flow-step reveal d3">
+      <div class="flow-step-num">03</div>
+      <h4>换油工艺指导</h4>
+      <div class="zh">Oil Change Guidance</div>
+      <p>提供从旧油清洗、加注方式到换油周期的标准化操作规范</p>
+    </div>
+    <div class="flow-step reveal d4">
+      <div class="flow-step-num">04</div>
+      <h4>油液监测服务</h4>
+      <div class="zh">Oil Monitoring</div>
+      <p>定期取样检测，分析粘度变化、污染度、金属磨损颗粒，提前预警故障</p>
+    </div>
+  </div>
+</section>
 
-        // Create particles
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 20; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 6 + 's';
-            particle.style.animationDuration = (4 + Math.random() * 4) + 's';
-            particlesContainer.appendChild(particle);
-        }
+<!-- ═══ COMPARISON ═══ -->
+<section class="section comparison-section" data-section="comparison">
+  <div class="comparison-header">
+    <p class="brand-chapter reveal">Chapter 06 · 技术对比</p>
+    <h2 class="comparison-title reveal d1">数据说话，<br>事实胜于雄辩</h2>
+  </div>
+  <div class="comp-table-wrap reveal-scale d2">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>参数名称</th>
+          <th>行业要求</th>
+          <th>普通润滑脂</th>
+          <th>孚斯威 First Way</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>滴点 Drop Point (°C)</td>
+          <td class="neutral-text">≥ 260°C</td>
+          <td class="bad-text">~ 150°C</td>
+          <td class="good-text">280°C+ OK ✓</td>
+        </tr>
+        <tr>
+          <td>高温轴承寿命</td>
+          <td class="neutral-text">越长越好</td>
+          <td class="bad-text">7–14天</td>
+          <td class="good-text">45天以上 OK ✓</td>
+        </tr>
+        <tr>
+          <td>蒸发损失 Evaporation Loss (200°C)</td>
+          <td class="neutral-text">≤ 5%</td>
+          <td class="bad-text">10–15%</td>
+          <td class="good-text">≤ 3% OK ✓</td>
+        </tr>
+        <tr>
+          <td>抗水性等级</td>
+          <td class="neutral-text">3级以内</td>
+          <td class="bad-text">4–5级</td>
+          <td class="good-text">1–2级 OK ✓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+<!-- ═══ GUARANTEE ═══ -->
+<section class="section guarantee-section" data-section="guarantee">
+  <div class="guarantee-header">
+    <p class="brand-chapter reveal">Chapter 07 · 售后保障</p>
+    <h2 class="guarantee-title reveal d1">不只是卖油<br>是长期合作伙伴</h2>
+  </div>
+  <div class="guarantee-grid">
+    <div class="guarantee-card reveal d1">
+      <div class="guarantee-icon">T</div>
+      <div>
+        <h4>48小时快速响应</h4>
+        <p>华南、华东两大核心区域仓储与技术服务中心，承诺48小时内到达现场。</p>
+      </div>
+    </div>
+    <div class="guarantee-card reveal d2">
+      <div class="guarantee-icon">S</div>
+      <div>
+        <h4>免费现场诊断</h4>
+        <p>为客户提供一次免费现场工况诊断，制定专属润滑方案。</p>
+      </div>
+    </div>
+    <div class="guarantee-card reveal d3">
+      <div class="guarantee-icon">W</div>
+      <div>
+        <h4>换油工艺指导</h4>
+        <p>提供从旧油清洗到加注的全流程标准化指导，确保润滑效果最大化。</p>
+      </div>
+    </div>
+    <div class="guarantee-card reveal d4">
+      <div class="guarantee-icon">K</div>
+      <div>
+        <h4>质量问题包退换</h4>
+        <p>因产品质量问题导致的损失，我司承担相应责任。</p>
+      </div>
+    </div>
+  </div>
+  <div class="service-range reveal d5">
+    <div>
+      <div class="range-title">华南区域</div>
+      <div class="range-text">广东、广西、海南<br>福建、江西、湖南</div>
+    </div>
+    <div>
+      <div class="range-title">华东区域</div>
+      <div class="range-text">江苏、浙江、上海<br>安徽、湖北</div>
+    </div>
+    <div>
+      <div class="range-title">其他区域</div>
+      <div class="range-text">远程技术支持<br>必要时安排工程师现场</div>
+    </div>
+  </div>
+</section>
 
-        // Reduce motion for accessibility
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right, .scale-up').forEach(function(el) {
-                el.style.transition = 'none';
-                el.classList.add('visible');
-            });
-        }
-    </script>
+<!-- ═══ BACK COVER ═══ -->
+<section class="section back-cover" data-section="back">
+  <div class="back-deco">
+    <div class="back-circle-1"></div>
+    <div class="back-circle-2"></div>
+  </div>
+  <div class="back-content">
+    <div class="back-logo reveal">
+      <img src="https://raw.githubusercontent.com/Jason-770317/first-way_h5/main/logo.png" alt="First Way" onerror="this.parentElement.innerHTML='FW'">
+    </div>
+    <h2 class="back-title reveal d1">First Way <span>-</span> 孚斯威</h2>
+    <p class="back-slogan reveal d2">让每一条瓦线，更顺畅</p>
+    <div class="back-divider reveal d2"></div>
+    <div class="back-info reveal d3">
+      <p>广州叶林科技有限公司</p>
+      <p>First Way 中国大陆独家运营主体</p>
+    </div>
+    <div class="back-contact reveal d4">
+      <p>联系人</p>
+      <strong>张金良</strong>
+    </div>
+  </div>
+</section>
 
-    
-    <script>
-        (function() {
-            const audio = document.getElementById('bgm');
-            const btn = document.getElementById('music-btn');
-            let isPlaying = false;
-            let hasInteracted = false;
-            
-            // Set volume
-            audio.volume = 0.4;
-            
-            // 等待用户交互后才播放
-            function tryPlay() {
-                if (!hasInteracted) {
-                    hasInteracted = true;
-                    audio.play().then(function() {
-                        isPlaying = true;
-                        btn.classList.add('playing');
-                    }).catch(function(e) {
-                        console.log('Autoplay failed:', e);
-                    });
-                }
-            }
-            
-            // 用户第一次点击页面时播放
-            document.addEventListener('click', tryPlay, { once: true });
-            document.addEventListener('touchstart', tryPlay, { once: true });
-            
-            // Toggle on click
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation(); // 阻止冒泡
-                if (isPlaying) {
-                    audio.pause();
-                    btn.classList.remove('playing');
-                } else {
-                    audio.play();
-                    btn.classList.add('playing');
-                }
-                isPlaying = !isPlaying;
-            });
-        })();
-    </script>
+<script>
+// ─── Scroll Reveal ───
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal,.reveal-scale,.reveal-left,.reveal-right').forEach(el => revealObserver.observe(el));
 
+// ─── Nav Dots ───
+const sections = document.querySelectorAll('[data-section]');
+const navDots = document.getElementById('navDots');
+const dotLabels = ['封面','品牌','历程','产品','痛点','方案','对比','保障','联系'];
+sections.forEach((sec, i) => {
+  const d = document.createElement('div');
+  d.className = 'nav-dot';
+  d.dataset.label = dotLabels[i] || '';
+  d.addEventListener('click', () => sec.scrollIntoView({ behavior: 'smooth' }));
+  navDots.appendChild(d);
+});
+const dots = document.querySelectorAll('.nav-dot');
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(sections).indexOf(entry.target);
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => sectionObserver.observe(s));
+
+// ─── Parallax on Cover ───
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const cover = document.querySelector('.cover');
+  if (cover) {
+    const circles = cover.querySelectorAll('.cover-circle');
+    circles.forEach((c, i) => {
+      c.style.transform = `translateY(${scrolled * (0.1 + i * 0.05)}px)`;
+    });
+  }
+});
+</script>
 
 </body>
 </html>
