@@ -1405,9 +1405,7 @@
         <div class="header-inner">
             <a href="#" class="header-logo">
                 <img src="./logo.png" alt="First Way" class="header-logo-img">
-            </a>
-            <a href="tel:18027348997" class="header-cta">Contact Us</a>
-        </div>
+            </a></div>
     </header>
 
     <!-- Hero Section -->
@@ -1999,18 +1997,26 @@
     </script>
 
         <script>
-        // Auto-play BGM on page load
-        (function() {
+        // BGM Auto-play with user interaction fallback
+        document.addEventListener('DOMContentLoaded', function() {
             const audio = document.getElementById('bgm');
             if (audio) {
                 audio.volume = 0.3;
+                // Try to play immediately
                 audio.play().catch(function() {
-                    // Autoplay blocked, user interaction required
+                    // If blocked, try on first user interaction
+                    document.addEventListener('click', function once() {
+                        audio.play();
+                        document.removeEventListener('click', once);
+                    });
                 });
             }
-        })();
+        });
     </script>
 
 
+
+    <!-- BGM Audio -->
+    <audio id="bgm" src="bgm.mp3" loop preload="auto"></audio>
 </body>
 </html>
