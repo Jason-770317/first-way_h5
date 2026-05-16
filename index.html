@@ -1385,38 +1385,6 @@
             margin: 48px 0;
         }
     </style>
-
-        /* ==================== MUSIC CONTROL ==================== */
-        .music-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #1B3A5C 0%, #2A4F7A 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 9999;
-            box-shadow: 0 4px 20px rgba(27, 58, 92, 0.4);
-            transition: all 0.3s ease;
-            color: #fff;
-        }
-        .music-control:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(27, 58, 92, 0.5);
-        }
-        .music-control.playing {
-            animation: pulse 1.5s infinite;
-        }
-        .music-control svg {
-            width: 24px;
-            height: 24px;
-        }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4); }
             50% { box-shadow: 0 4px 30px rgba(201, 168, 76, 0.8); }
         }
 
@@ -1943,7 +1911,7 @@
     </footer>
 
     <!-- Floating CTA -->
-    <div class="floating-cta">
+<div class="floating-cta">
         <a href="tel:18027348997" class="floating-btn floating-btn-phone" title="立即拨打">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"/>
@@ -2030,36 +1998,19 @@
         }
     </script>
 
-    <script>
+        <script>
+        // Auto-play BGM on page load
         (function() {
             const audio = document.getElementById('bgm');
-            const btn = document.getElementById('music-btn');
-            let isPlaying = false;
-            
-            // Set volume
-            audio.volume = 0.4;
-            
-            // Try to autoplay
-            audio.play().then(function() {
-                isPlaying = true;
-                btn.classList.add('playing');
-            }).catch(function() {
-                // Autoplay blocked, wait for user interaction
-            });
-            
-            // Toggle on click
-            btn.addEventListener('click', function() {
-                if (isPlaying) {
-                    audio.pause();
-                    btn.classList.remove('playing');
-                } else {
-                    audio.play();
-                    btn.classList.add('playing');
-                }
-                isPlaying = !isPlaying;
-            });
+            if (audio) {
+                audio.volume = 0.3;
+                audio.play().catch(function() {
+                    // Autoplay blocked, user interaction required
+                });
+            }
         })();
     </script>
+
 
 </body>
 </html>
