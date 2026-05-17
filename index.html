@@ -1922,27 +1922,5 @@
         }
     </script>
 
-        <script>
-        // BGM Auto-play with user interaction fallback
-        document.addEventListener('DOMContentLoaded', function() {
-            const audio = document.getElementById('bgm');
-            if (audio) {
-                audio.volume = 0.3;
-                // Try to play immediately
-                audio.play().catch(function() {
-                    // If blocked, try on first user interaction
-                    document.addEventListener('click', function once() {
-                        audio.play();
-                        document.removeEventListener('click', once);
-                    });
-                });
-            }
-        });
-    </script>
-
-
-
-    <!-- BGM Audio -->
-    <audio id="bgm" src="bgm.mp3" loop preload="auto"></audio>
-</body>
+    </body>
 </html>
