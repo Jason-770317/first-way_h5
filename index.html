@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="First Way PFPE高温润滑脂 - 德国配方技术，耐高温260°C+，服务瓦楞纸包装行业">
+<meta name="theme-color" content="#1B3A5C">
+<title>First Way PFPE高温润滑脂 | 广东孚斯威</title>
+<style>
+:root{--primary:#1B3A5C;--accent:#C9A84C;--white:#fff;--gray:#6c757d}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'SF Pro Display','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif;color:#333;line-height:1.6;background:#fff}
+img{max-width:100%;height:auto;display:block}
+
+/* Loading遮罩 */
+.loading-overlay{position:fixed;inset:0;background:var(--primary);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s}
+.loading-overlay.hidden{opacity:0;pointer-events:none}
+.loading-droplet{width:60px;height:80px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:linear-gradient(135deg,#C9A84C,#D4B86A);animation:pulse 1.5s ease-in-out infinite;margin-bottom:20px}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.loading-text{color:#fff;font-size:14px;letter-spacing:2px}
+
+/* Hero区域 */
+.hero{min-height:60vh;background:linear-gradient(160deg,#0f1e35,#1B3A5C 60%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%23C9A84C' stroke-width='0.5' fill='none' opacity='0.1'/%3E%3C/svg%3E") center/cover;opacity:.3}
+.hero-logo{width:80px;height:80px;margin-bottom:20px;position:relative;z-index:1}
+.hero-title{font-size:28px;font-weight:700;color:var(--accent);letter-spacing:3px;margin-bottom:10px;position:relative;z-index:1}
+.hero-subtitle{font-size:18px;color:var(--white);letter-spacing:4px;position:relative;z-index:1}
+.hero-tagline{font-size:13px;color:rgba(255,255,255,.7);margin-top:15px;position:relative;z-index:1}
+
+/* 产品卖点 */
+.features{padding:60px 20px;background:#f8f9fa}
+.features-title{text-align:center;font-size:20px;color:var(--primary);margin-bottom:40px;letter-spacing:3px}
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:600px;margin:0 auto}
+.feature-card{background:#fff;padding:25px 20px;border-radius:12px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,.08);border-top:3px solid var(--accent)}
+.feature-icon{font-size:32px;margin-bottom:12px}
+.feature-title{font-size:16px;font-weight:600;color:var(--primary);margin-bottom:8px}
+.feature-desc{font-size:12px;color:var(--gray)}
+
+/* 产品展示 */
+.products{padding:60px 20px;background:#fff}
+.products-title{text-align:center;font-size:20px;color:var(--primary);margin-bottom:30px;letter-spacing:3px}
+.product-card{max-width:500px;margin:0 auto 30px;background:linear-gradient(160deg,#0f1e35,#1B3A5C);border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(27,58,92,.3)}
+.product-header{padding:25px 20px;text-align:center;border-bottom:1px solid rgba(255,255,255,.1)}
+.product-code{font-size:12px;color:var(--accent);letter-spacing:2px}
+.product-name{font-size:20px;font-weight:700;color:#fff;margin-top:8px}
+.product-body{padding:20px}
+.product-spec{font-size:13px;color:rgba(255,255,255,.8);margin-bottom:8px}
+.product-spec span{color:var(--accent);font-weight:600}
+.product-price{font-size:28px;font-weight:700;color:var(--accent);text-align:center;margin-top:15px}
+
+/* 关于我们 */
+.about{padding:60px 20px;background:#f8f9fa}
+.about-title{text-align:center;font-size:20px;color:var(--primary);margin-bottom:30px;letter-spacing:3px}
+.about-content{background:#fff;padding:30px 20px;border-radius:12px;max-width:600px;margin:0 auto;box-shadow:0 4px 15px rgba(0,0,0,.08)}
+.about-text{font-size:14px;color:#555;line-height:1.8}
+.about-text p{margin-bottom:15px}
+
+/* CTA */
+.cta{padding:60px 20px;background:linear-gradient(160deg,#0f1e35,#1B3A5C);text-align:center}
+.cta-title{font-size:22px;color:#fff;font-weight:600;margin-bottom:20px}
+.cta-phone{font-size:32px;color:var(--accent);font-weight:700;letter-spacing:2px;margin-bottom:10px}
+.cta-name{font-size:14px;color:rgba(255,255,255,.7)}
+.cta-btn{display:inline-block;margin-top:20px;padding:14px 40px;background:var(--accent);color:#0f1e35;font-size:16px;font-weight:600;border-radius:30px;text-decoration:none;letter-spacing:1px}
+
+/* 页脚 */
+footer{padding:30px 20px;background:#0f1e35;text-align:center}
+footer p{font-size:12px;color:rgba(255,255,255,.5)}
+
+/* BGM按钮 */
+.bgm-control{position:fixed;bottom:20px;right:20px;width:50px;height:50px;border-radius:50%;background:var(--accent);border:none;color:#0f1e35;font-size:20px;cursor:pointer;z-index:1000;box-shadow:0 4px 15px rgba(201,168,76,.4);display:flex;align-items:center;justify-content:center}
+.bgm-control:active{transform:scale(.95)}
+
+/* 品牌标识 */
+.brand-strip{background:var(--primary);padding:15px;display:flex;align-items:center;justify-content:center;gap:10px}
+.brand-strip span{font-size:14px;color:var(--accent);font-weight:600;letter-spacing:2px}
+</style>
+</head>
+<body>
+
+<!-- Loading遮罩 -->
+<div class="loading-overlay" id="loadingOverlay">
+ <div class="loading-droplet"></div>
+ <div class="loading-text">加载中...</div>
+</div>
+
+<!-- Hero区域 -->
+<section class="hero">
+ <svg class="hero-logo" viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F4D03F"/><stop offset="100%" stop-color="#C9A84C"/></linearGradient></defs><path d="M50 5 Q80 50 80 80 Q80 120 50 125 Q20 120 20 80 Q20 50 50 5" fill="url(#g)"/></svg>
+ <div class="hero-title">FIRST WAY</div>
+ <div class="hero-subtitle">孚 斯 威</div>
+ <div class="hero-tagline">传承德国技术 · 深耕中国制造</div>
+</section>
+
+<!-- 产品卖点 -->
+<section class="features">
+ <h2 class="features-title">CORE ADVANTAGES</h2>
+ <div class="feature-grid">
+ <div class="feature-card">
+ <div class="feature-icon">🔥</div>
+ <div class="feature-title">耐高温260°C+</div>
+ <div class="feature-desc">高温工况稳定不劣化</div>
+ </div>
+ <div class="feature-card">
+ <div class="feature-icon">⏱️</div>
+ <div class="feature-title">长周期45天+</div>
+ <div class="feature-desc">延长换油降低成本</div>
+ </div>
+ <div class="feature-card">
+ <div class="feature-icon">💧</div>
+ <div class="feature-title">强抗水性</div>
+ <div class="feature-desc">水汽环境下依然稳定</div>
+ </div>
+ <div class="feature-card">
+ <div class="feature-icon">✨</div>
+ <div class="feature-title">低积碳少磨损</div>
+ <div class="feature-desc">延长设备寿命</div>
+ </div>
+ </div>
+</section>
+
+<!-- 产品展示 -->
+<section class="products">
+ <h2 class="products-title">PRODUCTS</h2>
+ <div class="product-card">
+ <div class="product-header">
+ <div class="product-code">HY-F2</div>
+ <div class="product-name">PFPE高温润滑脂</div>
+ </div>
+ <div class="product-body">
+ <div class="product-spec">规格：<span>800g/支</span></div>
+ <div class="product-spec">适用：<span>瓦线轴承、齿轮润滑</span></div>
+ <div class="product-spec">特性：<span>全氟聚醚基础油，耐高温抗腐蚀</span></div>
+ <div class="product-price">¥900/支</div>
+ </div>
+ </div>
+ <div class="product-card">
+ <div class="product-header">
+ <div class="product-code">YL-H2</div>
+ <div class="product-name">多功能润滑脂</div>
+ </div>
+ <div class="product-body">
+ <div class="product-spec">规格：<span>15kg/桶</span></div>
+ <div class="product-spec">适用：<span>通用机械润滑</span></div>
+ <div class="product-spec">特性：<span>复合锂基脂，通用性强</span></div>
+ <div class="product-price">¥480/桶</div>
+ </div>
+ </div>
+</section>
+
+<!-- 关于我们 -->
+<section class="about">
+ <h2 class="about-title">ABOUT US</h2>
+ <div class="about-content">
+ <div class="about-text">
+ <p><strong>广东孚斯威润滑科技有限公司</strong>专注于高端润滑油脂研发与销售，拥有自主品牌 <strong>First Way</strong>，源自德国配方技术，结合华南制造优势，为瓦楞纸包装行业提供高品质润滑解决方案。</p>
+ <p>我们与广州友乐（高新技术企业提供强大制造背书，致力于帮助客户降低润滑成本、提升设备效能。</p>
+ </div>
+ </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+ <div class="cta-title">联系我们</div>
+ <div class="cta-phone">180 2232 1918</div>
+ <div class="cta-name">广东孚斯威润滑科技有限公司</div>
+ <a href="tel:18022321918" class="cta-btn">立即致电</a>
+</section>
+
+<!-- 页脚 -->
+<footer>
+ <p>First Way | 广东孚斯威润滑科技有限公司 | 180 2232 1918</p>
+</footer>
+
+<!-- BGM -->
+<audio id="bgmAudio" loop preload="none">
+ <source src="bgm.m4a" type="audio/mp4">
+</audio>
+<button class="bgm-control" id="bgmControl" onclick="toggleBGM()">♪</button>
+
+<script>
+// Loading超时保护（3秒后强制关闭）
+(function(){
+ var t=setTimeout(function(){
+ var o=document.getElementById('loadingOverlay');
+ if(o&&!o.classList.contains('hidden')){o.classList.add('hidden')}
+ clearTimeout(t)
+ },3000)
+})()
+
+// 隐藏Loading（页面完全加载后）
+window.addEventListener('load',function(){
+ var o=document.getElementById('loadingOverlay');
+ if(o){o.classList.add('hidden')}
+})
+
+// BGM控制
+var bgmAudio=document.getElementById('bgmAudio');
+var bgmControl=document.getElementById('bgmControl');
+var bgmPlaying=false;
+function toggleBGM(){
+ if(bgmPlaying){
+  bgmAudio.pause();
+  bgmControl.innerHTML='♪';
+  bgmPlaying=false;
+ }else{
+  bgmAudio.play().catch(function(){});
+  bgmControl.innerHTML='❚❚';
+  bgmPlaying=true;
+ }
+}
+// 页面可见性变化时暂停BGM
+document.addEventListener('visibilitychange',function(){
+ if(document.hidden&&bgmPlaying){bgmAudio.pause();bgmControl.innerHTML='♪';bgmPlaying=false}
+});
+</script>
+</body>
+</html>
